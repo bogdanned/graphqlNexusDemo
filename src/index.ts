@@ -1,7 +1,9 @@
 import { queryType, stringArg, makeSchema } from 'nexus'
 import { GraphQLServer } from 'graphql-yoga'
 
+import DateScalar from "./objects/date"
 import User, {StatusEnum, Post} from "./objects/user"
+
 
 const Query = queryType({
   definition(t) {
@@ -22,7 +24,7 @@ const Query = queryType({
 })
 
 const schema = makeSchema({
-  types: [User, StatusEnum, Query, Post],
+  types: [User, StatusEnum, Query, Post, DateScalar],
   outputs: {
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/typings.ts',

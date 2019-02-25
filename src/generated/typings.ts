@@ -4,7 +4,12 @@
  */
 
 
-
+import { core } from "nexus"
+declare global {
+  interface NexusGenCustomDefinitionMethods<TypeName extends string> {
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Date";
+  }
+}
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
@@ -19,7 +24,7 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Post: { // root type
-    id: number; // Int!
+    id: string; // ID!
     title: string; // String!
   }
   Query: {};
@@ -32,6 +37,7 @@ export interface NexusGenRootTypes {
   Float: number;
   Boolean: boolean;
   ID: string;
+  Date: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -40,7 +46,7 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   Post: { // field return type
-    id: number; // Int!
+    id: string; // ID!
     title: string; // String!
   }
   Query: { // field return type
@@ -48,9 +54,11 @@ export interface NexusGenFieldTypes {
     users: NexusGenRootTypes['User'][]; // [User!]!
   }
   User: { // field return type
+    createdAt: any; // Date!
     fullName: string; // String!
     id: number; // Int!
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
+    status: NexusGenEnums['StatusEnum']; // StatusEnum!
   }
 }
 
@@ -75,7 +83,7 @@ export type NexusGenEnumNames = "StatusEnum";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "Date" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 

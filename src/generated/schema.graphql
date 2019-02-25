@@ -2,8 +2,11 @@
 ### Do not make changes to this file directly
 
 
+"""Date custom scalar type"""
+scalar Date
+
 type Post {
-  id: Int!
+  id: ID!
   title: String!
 }
 
@@ -18,10 +21,13 @@ enum StatusEnum {
 }
 
 type User {
+  createdAt: Date!
+
   """Full name of the user"""
   fullName: String!
 
   """Id of the user"""
   id: Int!
   posts: [Post!]!
+  status: StatusEnum!
 }
