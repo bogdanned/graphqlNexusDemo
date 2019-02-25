@@ -7,10 +7,16 @@ type Query {
   users: [User!]!
 }
 
+enum StatusEnum {
+  ACTIVE
+  DISABLED
+}
+
 type User {
   """Full name of the user"""
   fullName: String!
 
   """Id of the user"""
   id: Int!
+  status: StatusEnum!
 }

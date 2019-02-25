@@ -14,6 +14,7 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  StatusEnum: 1 | 2
 }
 
 export interface NexusGenRootTypes {
@@ -30,6 +31,7 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  StatusEnum: NexusGenEnums['StatusEnum'];
 }
 
 export interface NexusGenFieldTypes {
@@ -40,6 +42,7 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     fullName: string; // String!
     id: number; // Int!
+    status: NexusGenEnums['StatusEnum']; // StatusEnum!
   }
 }
 
@@ -60,7 +63,7 @@ export type NexusGenObjectNames = "Query" | "User";
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "StatusEnum";
 
 export type NexusGenInterfaceNames = never;
 

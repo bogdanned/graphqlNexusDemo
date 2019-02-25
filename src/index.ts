@@ -1,7 +1,7 @@
 import { queryType, stringArg, makeSchema } from 'nexus'
 import { GraphQLServer } from 'graphql-yoga'
 
-import User from "./objects/user"
+import User, {StatusEnum, Post} from "./objects/user"
 
 const Query = queryType({
   definition(t) {
@@ -22,7 +22,7 @@ const Query = queryType({
 })
 
 const schema = makeSchema({
-  types: [User, Query],
+  types: [User, StatusEnum, Query],
   outputs: {
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/typings.ts',
