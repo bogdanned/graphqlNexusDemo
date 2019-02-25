@@ -22,7 +22,7 @@ const Query = queryType({
 })
 
 const schema = makeSchema({
-  types: [User, StatusEnum, Query],
+  types: [User, StatusEnum, Query, Post],
   outputs: {
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/typings.ts',

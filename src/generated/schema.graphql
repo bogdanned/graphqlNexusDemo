@@ -2,6 +2,11 @@
 ### Do not make changes to this file directly
 
 
+type Post {
+  id: Int!
+  title: String!
+}
+
 type Query {
   hello(name: String): String!
   users: [User!]!
@@ -18,5 +23,5 @@ type User {
 
   """Id of the user"""
   id: Int!
-  status: StatusEnum!
+  posts: [Post!]!
 }
