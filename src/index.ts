@@ -4,8 +4,6 @@ import { GraphQLServer } from 'graphql-yoga'
 import DateScalar from "./objects/date"
 import User, {StatusEnum, Post} from "./objects/user"
 
-import {InputType} from "./mutations/adduser"
-
 
 const Mutation = mutationType({
   definition(t){
@@ -13,11 +11,10 @@ const Mutation = mutationType({
       type: "User",
       args: { 
         fullName: stringArg({ 
-          list: true, 
           required: true 
         }) 
       },      
-      resolve: (root, args, ctx) => (console.log(args.fullName))
+      resolve: (root, args, ctx) => ({fullName: args.fullName})
     })
   }
 })
@@ -41,7 +38,7 @@ const Query = queryType({
 })
 
 const schema = makeSchema({
-  types: [User, StatusEnum, Query, Post, DateScalar, InputType, Mutation],
+  types: [User, StatusEnum, Query, Post, DateScalar, Mutation],
   outputs: {
     schema: __dirname + '/generated/schema.graphql',
     typegen: __dirname + '/generated/typings.ts',

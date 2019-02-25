@@ -2,15 +2,11 @@
 ### Do not make changes to this file directly
 
 
-input CreateUserInput {
-  fullname: String!
-}
-
 """Date custom scalar type"""
 scalar Date
 
 type Mutation {
-  createUser(fullName: [String!]!): User!
+  createUser(fullName: String!): User!
 }
 
 type Post {
