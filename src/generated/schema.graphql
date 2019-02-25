@@ -4,4 +4,13 @@
 
 type Query {
   hello(name: String): String!
+  users: [User!]!
+}
+
+type User {
+  """Full name of the user"""
+  fullName: String!
+
+  """Id of the user"""
+  id: Int!
 }

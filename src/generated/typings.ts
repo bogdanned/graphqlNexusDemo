@@ -18,6 +18,10 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Query: {};
+  User: { // root type
+    fullName: string; // String!
+    id: number; // Int!
+  }
   String: string;
   Int: number;
   Float: number;
@@ -31,6 +35,11 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 export interface NexusGenFieldTypes {
   Query: { // field return type
     hello: string; // String!
+    users: NexusGenRootTypes['User'][]; // [User!]!
+  }
+  User: { // field return type
+    fullName: string; // String!
+    id: number; // Int!
   }
 }
 
@@ -47,7 +56,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query";
+export type NexusGenObjectNames = "Query" | "User";
 
 export type NexusGenInputNames = never;
 
